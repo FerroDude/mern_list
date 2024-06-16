@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   });
 });
 
+//get a specific list based on ID
 router.get('/:id', (req, res) => {
   res.json({
     message: 'Get a specific list'
