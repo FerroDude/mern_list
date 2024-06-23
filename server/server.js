@@ -11,6 +11,8 @@ app.listen(process.env.PORT, () => {
 });
 
 //middleWare
+app.use(express.json()); //sees if requests have data, if it does passes it and attaches it to REQUEST object, "req.body" in routers
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
