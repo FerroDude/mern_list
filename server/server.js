@@ -1,22 +1,24 @@
-require('dotenv').config();
-const express = require('express');
-const listsRoutes = require('./routes/lists');
+import dotenv from 'dotenv';
+import express from 'express';
+import listsRoutes from './routes/lists.js';
 
-//start express APP
+dotenv.config();
+
+// start express app
 const app = express();
 
-//listen for rquests
+// listen for requests
 app.listen(process.env.PORT, () => {
   console.log(process.env.PORT);
 });
 
-//middleWare
-app.use(express.json()); //sees if requests have data, if it does passes it and attaches it to REQUEST object, "req.body" in routers
+// middleware
+app.use(express.json()); // sees if requests have data, if it does passes it and attaches it to REQUEST object, "req.body" in routers
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
-//routes
+// routes
 app.use('/api/lists', listsRoutes);
